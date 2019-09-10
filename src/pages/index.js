@@ -38,8 +38,6 @@ class IndexPage extends Component {
         const { data } = this.props;
         const talks = data.allMarkdownRemark.edges;
 
-        console.log(talks);
-
         return (
             <Layout>
                 <SEO title="Home" />
@@ -49,7 +47,7 @@ class IndexPage extends Component {
                         <SpeakerImage />
                     </div>
                     {
-                        talks.slice(0).filter(({ node }) => Date.parse(node.frontmatter.start_date) - Date.parse(new Date()) > 0
+                        talks.filter(({ node }) => Date.parse(node.frontmatter.start_date) - Date.parse(new Date()) > 0
                         ).map(({ node }) => (
                                 <TalkCard
                                     key={node.id}
